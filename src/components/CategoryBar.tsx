@@ -1,20 +1,21 @@
 
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categories = [
-  { id: 1, name: "Top Offers", icon: "🔥" },
-  { id: 2, name: "Mobiles & Tablets", icon: "📱" },
-  { id: 3, name: "Electronics", icon: "💻" },
-  { id: 4, name: "TVs & Appliances", icon: "📺" },
-  { id: 5, name: "Fashion", icon: "👕" },
-  { id: 6, name: "Beauty", icon: "✨" },
-  { id: 7, name: "Home & Kitchen", icon: "🏠" },
-  { id: 8, name: "Furniture", icon: "🪑" },
-  { id: 9, name: "Flights", icon: "✈️" },
-  { id: 10, name: "Grocery", icon: "🛒" },
-  { id: 11, name: "Toys", icon: "🧸" },
-  { id: 12, name: "Books", icon: "📚" },
+  { id: 1, name: "Top Offers", icon: "🔥", slug: "offers" },
+  { id: 2, name: "Mobiles & Tablets", icon: "📱", slug: "mobiles" },
+  { id: 3, name: "Electronics", icon: "💻", slug: "electronics" },
+  { id: 4, name: "TVs & Appliances", icon: "📺", slug: "appliances" },
+  { id: 5, name: "Fashion", icon: "👕", slug: "fashion" },
+  { id: 6, name: "Beauty", icon: "✨", slug: "beauty" },
+  { id: 7, name: "Home & Kitchen", icon: "🏠", slug: "home" },
+  { id: 8, name: "Furniture", icon: "🪑", slug: "furniture" },
+  { id: 9, name: "Flights", icon: "✈️", slug: "flights" },
+  { id: 10, name: "Grocery", icon: "🛒", slug: "grocery" },
+  { id: 11, name: "Toys", icon: "🧸", slug: "toys" },
+  { id: 12, name: "Books", icon: "📚", slug: "books" },
 ];
 
 const CategoryBar = () => {
@@ -81,14 +82,14 @@ const CategoryBar = () => {
         onScroll={handleScroll}
       >
         {categories.map((category) => (
-          <a
+          <Link
             key={category.id}
-            href="#"
-            className="flex flex-col items-center min-w-[80px] px-2 text-flipkart-text-primary"
+            to={`/category/${category.slug}`}
+            className="flex flex-col items-center min-w-[80px] px-2 text-flipkart-text-primary transition-transform hover:scale-105"
           >
             <span className="text-2xl mb-1">{category.icon}</span>
             <span className="text-xs text-center font-medium">{category.name}</span>
-          </a>
+          </Link>
         ))}
       </div>
 

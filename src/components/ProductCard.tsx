@@ -2,16 +2,17 @@
 import { Star } from "lucide-react";
 import { Product } from "./DealsSection";
 import AddToCartButton from "./AddToCartButton";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const { title, image, price, originalPrice, discount, rating, ratingCount, badge } = product;
+  const { id, title, image, price, originalPrice, discount, rating, ratingCount, badge } = product;
 
   return (
-    <a href="#" className="block group">
+    <Link to={`/product/${id}`} className="block group">
       <div className="flex flex-col h-full p-3 rounded transition-all hover:shadow-md">
         {/* Product Image */}
         <div className="relative pb-[100%] mb-3 overflow-hidden">
@@ -68,7 +69,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 
