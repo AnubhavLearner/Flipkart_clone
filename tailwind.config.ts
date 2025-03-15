@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Flipkart colors
+				flipkart: {
+					blue: '#2874f0',
+					yellow: '#ffe500',
+					green: '#388e3c',
+					text: {
+						primary: '#212121',
+						secondary: '#878787',
+					},
+					rating: '#ffc107',
 				}
 			},
 			borderRadius: {
