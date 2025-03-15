@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowRight, Mail, Lock } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,16 +14,16 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate login API call
-    setTimeout(() => {
-      setIsLoading(false);
-      // Mock successful login
-      if (email && password) {
+    try {
+      const success = await login(email, password);
+      
+      if (success) {
         toast({
           title: "Login successful",
           description: "You've been logged in to your account",
@@ -35,7 +36,15 @@ const Login = () => {
           description: "Please check your credentials and try again",
         });
       }
-    }, 1500);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Login failed",
+        description: "An error occurred during login",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

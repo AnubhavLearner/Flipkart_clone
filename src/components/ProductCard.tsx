@@ -1,6 +1,7 @@
 
 import { Star } from "lucide-react";
 import { Product } from "./DealsSection";
+import AddToCartButton from "./AddToCartButton";
 
 interface ProductCardProps {
   product: Product;
@@ -55,6 +56,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <span className="text-flipkart-green text-xs ml-2">{discount}% off</span>
               )}
             </div>
+          </div>
+          
+          {/* Add to Cart Button */}
+          <div className="mt-3">
+            <AddToCartButton 
+              product={product} 
+              size="sm" 
+              className="w-full bg-flipkart-blue hover:bg-flipkart-blue/90"
+            />
           </div>
         </div>
       </div>
